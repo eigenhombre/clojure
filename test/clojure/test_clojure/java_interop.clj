@@ -284,8 +284,8 @@
       (to-array [])
       (to-array [1 2 3]) ))
 
-(defn queue [& contents]
-  (apply conj (clojure.lang.PersistentQueue/EMPTY) contents))
+(defn- queue* [& contents]
+  (queue contents))
 
 (defn array-typed-equals [expected actual]
   (and (= (class expected) (class actual))
@@ -306,7 +306,7 @@
 (test-to-passed-array-for vector)
 (test-to-passed-array-for list)
 (test-to-passed-array-for hash-set)
-(test-to-passed-array-for queue)
+(test-to-passed-array-for queue*)
 
 (deftest test-into-array
   ; compatible types only

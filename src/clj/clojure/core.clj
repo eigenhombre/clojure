@@ -6927,3 +6927,21 @@
  (catch Throwable t
    (.printStackTrace t)
    (throw t)))
+
+
+
+;;;;;;;;;;;;;;;;;;;;; Persistent Queue ;;;;;;;;;;;;;;;;;
+
+(defn queue
+  "Constructs a persistent queue"
+  {:added "1.5"}
+  [coll]
+  (clojure.lang.PersistentQueue. nil
+                                 (count coll)
+                                 (list* coll)
+                                 nil))
+
+(defn queue?
+  "Returns true if arg is a instance of PersistentQueue"
+  {:added "1.5"}
+  [arg] (instance? clojure.lang.PersistentQueue arg))
